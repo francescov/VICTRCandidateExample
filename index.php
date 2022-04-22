@@ -40,6 +40,19 @@ curl_close ($ch);
 print  $server_output ;
     
 
+/* Save the repository information to a database */
+    mysqli_connect(
+        string $hostname = "localhost",
+        string $username = "current_username",
+        string $password = "current_password",
+        string $database = "github_repository_listings",
+        string $table = "github_data",
+        int $port = 3306,
+        string $socket = ""
+    ):mysqli|false
+            
+    mysqli_query("INSERT INTO " . $table . "(repositoryID, repositoryTopic) VALUES (0, ".mysqli_real_escape_string(htmlspecialchars($_POST['inputTopic'])).")");
+            
 ?>
     </body>
 </html>
