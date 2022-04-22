@@ -17,7 +17,9 @@
 
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"https://api.github.com/search/repositories?q=topic:ruby+topic:rails");
+/* cURL the github repository with the topic that is passed from the form */
+/* input is sanitized as to not have invalid or bad data passed */
+curl_setopt($ch, CURLOPT_URL,"https://api.github.com/search/repositories?q=topic:". htmlspecialchars($_POST['inputTopic']);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS,$vars);  //Post Fields
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
